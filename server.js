@@ -33,6 +33,18 @@ function runServer() {
 }
 
 //... closeServer defined here
+function closeServer() {
+  return new Promise((reslove, reject) => {
+    console.log('closing server');
+    server.close(err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+}
 
 if (require.main === module) {
   runServer().catch(err => console.error(err));
